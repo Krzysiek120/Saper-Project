@@ -94,3 +94,7 @@ input:hover {
         border-radius: 15px 70px;
     }
 }
+
+#game {
+    background-color: transparent;
+}

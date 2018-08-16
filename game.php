@@ -10,7 +10,7 @@
     <title>The Saper Game</title>
     <meta charset="UTF-8">
 </head>
-<body style="background:#EEE">
+<body>
 <div style="width:800px; margin: 0 auto; padding:16px">
     <style>
         .fel{position:absolute;height:60px;width:60px}
@@ -23,7 +23,7 @@
         #gboard{position:relative;background:#552200;width:428px;height:428px;margin: 0 auto}
     </style>
     <style>
-        #game{margin:0 auto;padding:4px; background: #eceff1;transition:filter 2s}
+        #game{margin:0 auto;padding:4px; transition:filter 2s}
         #game > div{border:2px solid green;border-style:outset;float:left;background:#AAA;transition:background 1s;text-align:center}
         #game > div:hover{background:#DDD}
         #game > div.mbomb{background:#c62828}
@@ -47,14 +47,17 @@
 
     <div id="status"></div>
     <div id="game"></div>
-    <div id="basicUsage">00:00:00</div>
+    <div id="basicUsage">0</div>
 
     <script>
+
+        var timer = 0;
+
+        setInterval(function(){ timer++; $('#basicUsage').text(timer) }, 1000);
 
         var val = " <?php echo $_POST['size'] ?> ";
 
 
-        console.log(val);
 
         if (val == 10) {
             var defX = 10, defY = 10, defM = val;
@@ -64,7 +67,6 @@
             var defX = 15, defY = 15, defM = val;
         }
 
-        console.log(defM);
 
         var MAXSIZEX = 640;
         var MAXSIZEY = 400;
@@ -95,7 +97,6 @@
         };
 
         var start = function(e) {
-            console.log(e.button);
             if (e.type === "click" && e.button !== 0) {
                 return;
             }
@@ -109,7 +110,7 @@
                 presstimer = setTimeout(function() {
                     markPos(e.target.id, "changemark");
                     longpress = true;
-                }, 500);
+                }, 300);
             }
 
             return false;
@@ -152,7 +153,6 @@
                     }
                     break;
                 case "click":
-                    console.log(obj);
                     if (!(obj.classList.contains("sel") || obj.classList.contains("sbomb"))){
                         if(obj.classList.contains("bomb")){
                             obj.classList.add("sbomb");
@@ -206,7 +206,7 @@
                 list[chosen] = list[i];
                 list[i] = swap;
             }
-            console.log(list);
+
             for(var i = 0; i < ely; i++){
                 for(var j = 0; j < elx; j++){
                     var div = document.createElement("div");
