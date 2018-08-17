@@ -12,38 +12,7 @@
 </head>
 <body>
 <div style="width:800px; margin: 0 auto; padding:16px">
-    <style>
-        .fel{position:absolute;height:60px;width:60px}
-        .fbl{fill:gray}
-        .fbl:hover{stroke:black}
-        .fcirc:hover{stroke:blue}
-        .fsel{stroke:yellow}
-        #gwin{display:table;position:absolute;top:0;left:0;width:428px;height:428px;z-index:30;background:rgba(0,0,0,0.75);text-align:center;font-size:20px;color:#FFFFFF;}
-        #gstatus{max-width:420px;min-width:248px;text-align:center;border:4px solid #552200;margin: 0 auto}
-        #gboard{position:relative;background:#552200;width:428px;height:428px;margin: 0 auto}
-    </style>
-    <style>
-        #game{margin:0 auto;padding:4px; transition:filter 2s}
-        #game > div{border:2px solid green;border-style:outset;float:left;background:#AAA;transition:background 1s;text-align:center}
-        #game > div:hover{background:#DDD}
-        #game > div.mbomb{background:#c62828}
-        #game > div.mbomb:hover{background:#ffcdd2}
-        #game > div.midk{background:#00695c}
-        #game > div.midk:hover{background:#b2dfdb}
-        #game > div.sbomb{background:#000}
-        #game > div.sel{background:#E5E5E5;font-weight:700}
-        #game > div.sel1{color: #33691e}
-        #game > div.sel2{color: #827717}
-        #game > div.sel3{color: #f57f17}
-        #game > div.sel4{color: #ff6f00}
-        #game > div.sel5{color: #e65100}
-        #game > div.sel6{color: #bf360c}
-        #game > div.sel7{color: #b71c1c}
-        #game > div.sel8{color: #d50000}
-        #status{margin:0 auto;height:30px;line-height:30px;padding:4px}
-        .btn{padding:4px;line-height:36px;border: 1px solid black;border-radius:8px;text-decoration:none}
-        .btn:hover{color:black}
-    </style>
+
 
     <div id="status"></div>
     <div id="game"></div>
@@ -56,8 +25,6 @@
         setInterval(function(){ timer++; $('#basicUsage').text(timer) }, 1000);
 
         var val = " <?php echo $_POST['size'] ?> ";
-
-
 
         if (val == 10) {
             var defX = 10, defY = 10, defM = val;
@@ -115,8 +82,6 @@
 
             return false;
         };
-
-
 
         function isBomb(id){
             var obj = document.getElementById(id);
@@ -237,15 +202,12 @@
 
         function endGame(){
             document.getElementById("game").style.filter = "blur(2px)";
-            document.getElementById("game").innerHTML += '<p style="position:absolute;width:'+document.getElementById("game").style.width+';height:'+document.getElementById("game").style.height+';background:rgba(0,0,0,0.2);margin:0"></p>';
+            document.getElementById("game").innerHTML += '<p style="position:absolute;width:'+document.getElementById("game").style.width+';height:'+document.getElementById("game").style.height+';margin:0"></p>';
         }
-
-
 
         prepareGame(defX, defY, defM);
 
     </script>
-
 
 </div>
 </body></html>
