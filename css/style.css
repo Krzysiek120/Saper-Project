@@ -79,10 +79,6 @@ input:hover {
 }
 
 @media (max-width: 450px) {
-    .buttons {
-        margin-left: 10%;
-    }
-
     h2 {
         margin-left: 10%;
     }
@@ -102,9 +98,13 @@ input:hover {
     transition:filter 2s;
 }
 
+.hidden {
+    display: none;
+}
+
 
 #game > div{
-    border:2px solid green;
+    border:2px solid orange;
     border-style:outset;
     float:left;
     background:#AAA;
