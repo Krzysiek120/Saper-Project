@@ -1,29 +1,8 @@
 $(function() {
 
-
     var timer = 0;
 
     var interval = setInterval(function(){ timer++; $('#basicUsage').text(timer) }, 1000);
-
-    // $.post("saveScores.php",
-    //     {
-    //         name: "Donald Duck",
-    //         city: "Duckburg"
-    //     },
-    //     function(data, status){
-    //         alert("Data: " + data + "\nStatus: " + status);
-    //     });
-
-    // $.ajax({
-    //     url: 'saveScores.php', //This is the current doc
-    //     type: "POST",
-    //     dataType:'json', // add json datatype to get json
-    //     data: ({score: timer}),
-    //     success: function(data){
-    //         console.log(data);
-    //     }
-    // });
-
 
     if (val == 10) {
         var xSize = 10, ySize = 10, Mines = val;
@@ -119,7 +98,7 @@ $(function() {
                 if (!(obj.classList.contains("sel") || obj.classList.contains("sbomb"))){
                     if(obj.classList.contains("bomb")){
                         obj.classList.add("sbomb");
-                        showMessage('Koniec gry, <a href="javascript:void" onclick="Start(xSize, ySize, Mines)">rozpocznij od nowa</a>');
+                        showMessage('Koniec gry, <a href="javascript:void" onclick="prepareGame(xSize, ySize, Mines)">rozpocznij od nowa</a>');
                         document.getElementById('song').innerHTML = '<audio autoplay><source src="music/loughing.mp3" type="audio/mpeg" /></audio>';
                         endGame();
                     } else {
@@ -142,7 +121,7 @@ $(function() {
                 break;
         }
         if(toDiscover == 0){
-            showMessage('Gra zakończona sukcesem ! <a href="javascript:void" onclick="Start(xSize, ySize, Mines)">Zagraj jeszcze raz</a>');
+            showMessage('Gra zakończona sukcesem ! <a href="javascript:void" onclick="prepareGame(xSize, ySize, Mines)">Zagraj jeszcze raz</a>');
             document.getElementById('song').innerHTML = '<audio autoplay><source src="music/applause.mp3" type="audio/mpeg" /></audio>';
             myStopFunction(interval);
 
@@ -157,7 +136,7 @@ $(function() {
         clearInterval(interval);
     }
 
-    function Start(elx, ely, mines){
+    function prepareGame(elx, ely, mines){
         window.oncontextmenu = function (){return false;}
         xSize = elx; ySize = ely; Mines = mines;
         var obj = document.getElementById("game");
@@ -214,6 +193,6 @@ $(function() {
         document.getElementById("game").innerHTML += '<p style="position:absolute;width:'+document.getElementById("game").style.width+';height:'+document.getElementById("game").style.height+';margin:0"></p>';
     }
 
-    Start(xSize, ySize, Mines);
+    prepareGame(xSize, ySize, Mines);
 
 });

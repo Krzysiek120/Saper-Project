@@ -9,6 +9,13 @@ $db = new Db();
 
 $sth = $db->getPdo();
 
-$statement = $sth->query("INSERT INTO `highscores`(`id`, `name`, `time`) VALUES (null, $name,$seconds)");
+$statement = $sth->prepare("INSERT INTO `highscores`(`id`, `name`, `time`) VALUES (:id, :sname, :sSeconds)");
 
-header('location', 'index.php');
+$statement->execute(array(
+    "id" => null,
+    "sname" => $name,
+    "sSeconds" => $seconds,
+));
+
+header("Location: index.php");
+exit;
